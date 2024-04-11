@@ -14,22 +14,22 @@ from googletrans import Translator
 spoken_text = None
 
 
-st.title("El Escuchadero🦻")
+st.title("¿Qué meme eres según como te sientes? 🥳")
 st.subheader("¿Cómo te sientes hoy?")
 
 width, height = 200, 200
 
-modo = st.radio("Es una difícil decisión, lo sé.", ("Feliz", "Triste", "Enojado", "Preocupado", "Asustado"))
+modo = st.radio("Bueno, empecemos por conocer cómo te sientes", ("Feliz", "Triste", "Enojado", "Preocupado", "Asustado"))
 if modo == "Feliz":
     st.write("¡Que bien!😊")
     image = Image.open("feliz.png")
     st.image(image)
 if modo == "Triste":
-    st.write("Lo lamento mucho 😔.")
+    st.write("NOOOO Que pesar 😔.")
     image2 = Image.open("triste.png")
     st.image(image2)
 if modo == "Enojado":
-    st.write("Lo lamento mucho 😔.")
+    st.write("Que desafortunado 😔.")
     image3 = Image.open("enojado.png")
     st.image(image3)
 if modo == "Preocupado":
@@ -37,7 +37,7 @@ if modo == "Preocupado":
     image4 = Image.open("preocupado.png")
     st.image(image4)
 if modo == "Asustado":
-    st.write("Lo lamento mucho 😔.")
+    st.write("Esperemos que todo salga bien 😔.")
     image5 = Image.open("asustado.png")
     st.image(image5)
 
@@ -46,7 +46,7 @@ if modo == "Asustado":
 # AUDIO A TEXTO
 stt_button = Button(label=" COMENZAR ", width=200)
 
-st.subheader("Cuéntame más sobre cómo te sientes")
+st.subheader("Cuéntame más sobre la respuesta que esperas, ¿qué te gustaría ser? Una gallina sonriente, un gato enojado o tal vez homero simpson acostado en su cama...")
 st.write("Apenas hundas sobre el botón, comienza a hablar:")
 
 stt_button.js_on_event("button_click", CustomJS(code="""
@@ -79,7 +79,7 @@ result = streamlit_bokeh_events(
 if result:
     if "GET_TEXT" in result:
         spoken_text = result.get("GET_TEXT")
-        st.write("Esto es lo que me dijiste que sientes:", spoken_text)
+        st.write("Esto es lo que nos comentaste:", spoken_text)
 
 
 
@@ -87,10 +87,10 @@ if result:
 from textblob import TextBlob
 import streamlit as st
 
-st.subheader("Este es el sentimiento que percibo de tus palabras:")
-st.write("(Apenas me lo cuentes mediante el botón, lo analizaré.")
+st.subheader("Así interpretamos lo que dices:")
+st.write("(Apenas me lo cuentes mediante el botón, lo analizaremos.")
 st.write("")
-st.write("Esto es lo que percibo:")
+st.write("Nos parece que pensamos esto:")
 
 
 if spoken_text:
@@ -110,21 +110,21 @@ st.write("")
 st.write("")
 
 #RECOMENDACIÓN
-st.subheader("La recomendación que te doy es: ")
+st.subheader("El meme que te asignamos el día de hoy es: ")
 if modo == "Feliz":
-    image6 = Image.open("feliz.jpg")
+    image6 = Image.open("feliz meme.jpg")
     st.image(image6)
 if modo == "Triste":
-    image7 = Image.open("triste.jpg")
+    image7 = Image.open("tristeza meme.jpg")
     st.image(image7)
 if modo == "Enojado":
-    image8 = Image.open("enojo.jpg")
+    image8 = Image.open("enojo meme.jpg")
     st.image(image8)
 if modo == "Preocupado":
-    image9 = Image.open("preocupado.jpg")
+    image9 = Image.open("preocupado meme.jpg")
     st.image(image9)
 if modo == "Asustado":
-    image10 = Image.open("miedo.jpg")
+    image10 = Image.open("preocupado meme.jpg")
     st.image(image10)
 
 
